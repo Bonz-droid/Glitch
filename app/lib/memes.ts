@@ -1,8 +1,8 @@
 export const captions = [
-  'QUANDO IL BOT CAPISCE IL MEME\nMA TU NO.',
-  '404: PIANO SERIO\nNON TROVATO.',
-  'HO CHIESTO ALL’AI IL FUTURO.\nHA RISPOSTO: LOL.',
-  'IL MERCATO DORME.\nIL MIO ROBOT POSTA.',
+  'WHEN THE BOT GETS THE MEME\nBUT YOU DON’T.',
+  '404: SERIOUS PLAN\nNOT FOUND.',
+  'I ASKED AI ABOUT THE FUTURE.\nIT SAID: LOL.',
+  'THE MARKET SLEEPS.\nMY ROBOT POSTS.',
 ];
 const escapeXml = (text: string) => text.replace(/[<>&"']/g, character => ({ '<': '&lt;', '>': '&gt;', '&': '&amp;', '"': '&quot;', "'": '&apos;' }[character]!));
 
