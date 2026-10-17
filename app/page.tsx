@@ -1,8 +1,109 @@
 'use client';
-import { useState } from 'react';
-function Robot({small=false}:{small?:boolean}) { return <svg className={small?'robot small':'robot'} viewBox="0 0 560 560" role="img" aria-label="G-01, robot GLITCH con occhi neon e antenna viola"><defs><linearGradient id={small?'metalSmall':'metal'} x2="1" y2="1"><stop stopColor="#777b88"/><stop offset=".32" stopColor="#323641"/><stop offset="1" stopColor="#12141c"/></linearGradient><filter id={small?'glowSmall':'glow'}><feGaussianBlur stdDeviation="5"/></filter></defs><ellipse cx="280" cy="495" rx="155" ry="22" fill="#a4ff32" opacity=".1"/><g className="robot-body"><path d="M282 86V48h40" stroke="#ac74ff" strokeWidth="10" fill="none"/><circle cx="325" cy="48" r="12" fill="#b680ff"/><path d="M155 287 116 376l32 62 36-15-18-48 40-53m198-35 40 89-32 62-36-15 18-48-40-53" fill="#353844" stroke="#838696" strokeWidth="3"/><path d="m207 399-15 79h62l23-72m71-7 15 79h-62l-23-72" fill="#282c36" stroke="#636774" strokeWidth="3"/><path d="M185 280h190l-20 135H205z" fill={`url(#${small?'metalSmall':'metal'})`} stroke="#777b88" strokeWidth="3"/><rect x="229" y="321" width="102" height="57" rx="6" fill="#0c1112" stroke="#737a66"/><path d="m250 350 13-15-1 28 15-17m12 0h20" stroke="#b0ff36" strokeWidth="5" fill="none"/><path d="M134 125 167 95h225l34 30v132l-32 30H165l-31-30z" fill={`url(#${small?'metalSmall':'metal'})`} stroke="#9a9ca5" strokeWidth="3"/><path d="M152 142h255v101H152z" fill="#070b0e" stroke="#4c5260" strokeWidth="5"/><path d="m183 172 43 38m0-38-43 38m145-30h40v20h-40" stroke="#b4ff3d" strokeWidth="13"/><path d="m183 172 43 38m0-38-43 38m145-30h40v20h-40" stroke="#b4ff3d" strokeWidth="15" filter={`url(#${small?'glowSmall':'glow'})`} opacity=".5"/><path d="M258 231h42m-27 25h15" stroke="#9ea4a9" strokeWidth="5"/><rect x="115" y="156" width="18" height="66" fill="#9b69f5"/><rect x="428" y="156" width="18" height="66" fill="#9b69f5"/><circle cx="172" cy="117" r="4" fill="#bcff54"/><path d="M359 111h28m-228 154h24" stroke="#b4b6bd" strokeWidth="3"/></g></svg> }
-const captions=['QUANDO IL BOT CAPISCE IL MEME\nMA TU NO.','404: PIANO SERIO\nNON TROVATO.','HO CHIESTO ALL’AI IL FUTURO.\nHA RISPOSTO: LOL.','IL MERCATO DORME.\nIL MIO ROBOT POSTA.'];
-export default function Home(){ const [meme,setMeme]=useState(0);const [paused,setPaused]=useState(false);const [copied,setCopied]=useState(false);
-async function copy(){try{await navigator.clipboard.writeText(captions[meme]+' #GLITCH $GLTCH');setCopied(true);}catch{setCopied(false);} }
-function download(){const text=captions[meme].split('\n');const svg=`<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1080"><rect width="1080" height="1080" fill="#111118"/><text x="70" y="120" fill="#b3ff39" font-family="monospace" font-size="46">GLITCH // MEME LAB</text><rect x="300" y="240" width="480" height="340" rx="35" fill="#45404f" stroke="#ad75ff" stroke-width="10"/><text x="380" y="465" fill="#b3ff39" font-family="monospace" font-size="150">× _</text>${text.map((t,i)=>`<text x="540" y="${740+i*65}" text-anchor="middle" fill="white" font-family="monospace" font-size="36">${t}</text>`).join('')}<text x="70" y="1000" fill="#ad75ff" font-family="monospace" font-size="32">$GLTCH · DEVNET EXPERIMENT</text></svg>`;const url=URL.createObjectURL(new Blob([svg],{type:'image/svg+xml'}));const a=document.createElement('a');a.href=url;a.download='glitch-meme.svg';a.click();URL.revokeObjectURL(url);}
-return <div className={paused?'site paused':'site'}><a className="skip" href="#main">Vai al contenuto</a><header><a href="#" className="logo">G<span>↯</span> GLITCH<span className="logo-dot">®</span></a><nav aria-label="Navigazione principale"><a href="#about">About</a><a href="#tokenomics">Tokenomics</a><a href="#memes">Memes</a><a href="#community">Community</a></nav><a className="nav-cta" href="#community">Entra nel glitch ↗</a></header><main id="main"><section className="hero"><div className="hero-copy"><p className="eyebrow"><span className="status-dot"/> SYSTEM ONLINE <span className="muted">// SOLANA DEVNET</span></p><h1>A BEAUTIFUL<br/><span className="glitch-word">ERROR.</span></h1><p className="hero-description">L’intelligenza è artificiale.<br/>Il caos è tutto nostro.</p><p className="subcopy">Un robot fuori programma. Una community di meme.<br/>Benvenuto in GLITCH, l’esperimento AI su Solana.</p><div className="actions"><a className="button primary" href="#memes">Esplora il Meme Lab <span>↗</span></a><a className="text-link" href="#about">Cos’è GLITCH? ↓</a></div><div className="hero-meta"><span>$GLTCH</span><span>100% INTERNET CULTURE</span><span>0 € BUDGET INIZIALE</span></div></div><div className="hero-art"><div className="orbit"/><div className="art-grid"/><span className="art-label top">UNIT G–01 / SENTIENCE UNKNOWN</span><span className="floating-code">&lt; brain.exe /&gt;<br/><b>unexpected vibe detected_</b></span><Robot/><div className="robot-tag"><span className="status-dot"/> NOT A BUG. A FEATURE.</div><span className="art-label bottom">[ GENERATIVE CHAOS PROTOCOL ]</span></div><div className="hero-bottom"><span>SCROLL TO DECODE ↓</span><button onClick={()=>setPaused(!paused)} aria-pressed={paused}>{paused?'▶ Attiva animazioni':'Ⅱ Pausa animazioni'}</button><span>EST. 2026 — INTERNET NATIVE</span></div></section><div className="ticker" aria-hidden="true">NO ROADMAP TO THE MOON <span>✳</span> JUST A BEAUTIFUL ERROR <span>✳</span> POWERED BY MEMES <span>✳</span> BUILT ON SOLANA <span>✳</span></div><section id="about" className="section about"><div><p className="eyebrow purple">01 / ABOUT THE ERROR</p><h2>Il futuro ha<br/>un <em>piccolo bug.</em></h2></div><div><p className="large-copy">Ci hanno promesso robot perfetti.<br/>Il nostro ha scoperto i meme.</p><p>GLITCH è un concept di meme coin AI: cultura internet, creatività umana e un robot che prende tutto poco sul serio. G–01 è la nostra mascotte, non un agente di trading.</p><p>Partiamo da zero, sulla devnet Solana. Un laboratorio aperto dove sperimentare un token SPL e costruire un’identità insieme. Nessuna promessa di rendimento. Solo spazio alle idee.</p><div className="about-tags"><span>AI INSPIRED</span><span>COMMUNITY FIRST</span><span>DEVNET ONLY</span></div></div></section><section id="tokenomics" className="section tokenomics"><div className="section-heading"><div><p className="eyebrow purple">02 / THE NUMBERS</p><h2>Less hype.<br/><em>More transparency.</em></h2></div><p>Una proposta, non una distribuzione già avvenuta.<br/>Token di test senza valore economico.</p></div><div className="token-layout"><div className="supply"><span className="eyebrow">SUPPLY DI TEST</span><strong>1.000.000.000</strong><div><span>$GLTCH</span><span>SPL · 6 DECIMALI</span></div><div className="allocation-bar"><i/><i/><i/><i/></div><p>Mint SPL standard. Freeze authority assente.<br/>Mint authority revocata dopo l’emissione di test.</p></div><div className="allocations">{[['60%','Community & meme rewards'],['20%','Ecosistema & collaborazioni'],['15%','Riserva di progetto'],['5%','Contributori']].map(([n,t])=><div key={n}><span>{t}</span><strong>{n}</strong></div>)}<small>Ripartizione concettuale: lo script deposita il 100% in un account di test. Nessuna liquidità o quotazione.</small></div></div></section><section id="memes" className="section memes"><div className="section-heading"><div><p className="eyebrow purple">03 / MEME LAB</p><h2>Make memes.<br/><em>Break the simulation.</em></h2></div><p>Il primo contributo? Una pessima battuta.<br/>Remixa il caos e portalo fuori da qui.</p></div><div className="meme-layout"><div className="meme-card"><div className="meme-top">GLITCH ORIGINALS <span>#{String(meme+1).padStart(3,'0')}</span></div><Robot small/><p aria-live="polite">{captions[meme]}</p><span className="meme-watermark">$GLTCH / ERROR IS AN ART FORM</span></div><div className="meme-controls"><span className="eyebrow">LOCAL MEME GENERATOR</span><h3>Il tuo prossimo<br/>errore preferito.</h3><p>Scegli una caption, scarica il meme in SVG e condividilo dove vuoi. Nessun account, nessun costo.</p><button className="button primary" onClick={()=>{setMeme((meme+1)%captions.length);setCopied(false);}}>Cambia frequenza <span>⟳</span></button><button className="button secondary" onClick={download}>Scarica meme <span>↓</span></button><button className="text-link" onClick={copy}>{copied?'Caption copiata ✓':'Copia caption ↗'}</button><small>Caption predefinite, elaborate nel browser.<br/>Nessuna API AI a pagamento.</small></div></div></section><section id="community" className="community"><p className="eyebrow">04 / FIND YOUR PEOPLE</p><h2>YOU ARE<br/>THE <span>GLITCH.</span></h2><p>Artisti, builder, shitposter e robot confusi.<br/>C’è spazio per il tuo tipo di strano.</p><a className="button primary" href="https://github.com/Bonz-droid/Glitch" target="_blank" rel="noopener noreferrer">Contribuisci su GitHub ↗</a><p className="community-note">Canali social ufficiali in preparazione.<br/>Nessuna prevendita. Nessun mint mainnet.</p><span className="corner tl">+</span><span className="corner br">+</span></section></main><footer><a className="logo" href="#">G↯ GLITCH</a><p>Un esperimento, non un investimento.<br/>$GLTCH è un token di test devnet senza valore reale.</p><span>© 2026 GLITCH<br/>STAY WEIRD. STAY HUMAN.</span></footer></div>}
+
+import { useRef, useState } from 'react';
+import { Robot } from './components/robot';
+import { captions, createMemeSvg } from './lib/memes';
+
+function Arrow() { return <span aria-hidden="true">↗</span>; }
+function Graffiti({ className = '' }: { className?: string }) {
+  return <svg className={`graffiti ${className}`} viewBox="0 0 260 170" fill="none" aria-hidden="true"><path d="m27 125 41-89-2 105 57-109-17 112 64-92-18 101M14 110l211-40M19 146l216-28m-42-71 12-31 13 25 22-28-2 38-45-4Z" stroke="currentColor" strokeWidth="6" strokeLinecap="round" strokeLinejoin="round"/><path d="m68 138-3 22m45-23-1 25m52-32-4 17" stroke="currentColor" strokeWidth="3"/></svg>;
+}
+
+export default function Home() {
+  const [meme, setMeme] = useState(0);
+  const [paused, setPaused] = useState(false);
+  const [copyStatus, setCopyStatus] = useState('');
+  const memeArt = useRef<HTMLDivElement>(null);
+
+  async function copy() {
+    try {
+      await navigator.clipboard.writeText(`${captions[meme]} #GLITCH $GLTCH`);
+      setCopyStatus('Caption copiata ✓');
+    } catch {
+      setCopyStatus('Copia non disponibile: seleziona la caption nel poster.');
+    }
+  }
+
+  function download() {
+    const robot = memeArt.current?.querySelector('svg');
+    if (!robot) return;
+    const svg = createMemeSvg(captions[meme], robot.innerHTML);
+    const url = URL.createObjectURL(new Blob([svg], { type: 'image/svg+xml' }));
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = 'glitch-meme.svg';
+    document.body.append(link);
+    link.click();
+    link.remove();
+    window.setTimeout(() => URL.revokeObjectURL(url), 1000);
+  }
+
+  return (
+    <div className={paused ? 'site paused' : 'site'}>
+      <a className="skip" href="#main">Vai al contenuto</a>
+      <header className="site-header">
+        <a href="#" className="wordmark" aria-label="GLITCH, inizio pagina">GLITCH<span>✳</span></a>
+        <nav aria-label="Navigazione principale">
+          <a href="#about">About</a><a href="#tokenomics">Tokenomics</a><a href="#memes">Memes</a><a href="#community">Community</a>
+        </nav>
+        <a className="header-link" href="#community">JOIN THE ERROR <Arrow/></a>
+      </header>
+
+      <main id="main">
+        <section className="hero" aria-labelledby="hero-title">
+          <div className="hero-wall" aria-hidden="true"/>
+          <div className="hero-grid" aria-hidden="true"/>
+          <div className="hero-topline mono"><span><i className="status-dot"/> SOLANA DEVNET EXPERIMENT</span><span>UNAUTHORIZED. UNFILTERED. UNFIXABLE.</span></div>
+          <h1 id="hero-title" className="hero-title" data-text="GLITCH">GLITCH</h1>
+          <span className="hero-scribble" aria-hidden="true">system reject.</span>
+          <div className="hero-story">
+            <span className="eyebrow">AI BRAIN. INTERNET SOUL.</span>
+            <p className="slogan" lang="en">They tried to fix the bug.<br/><strong>The bug became<br/>the feature.</strong></p>
+            <p className="hero-description">Un robot fuori programma.<br/>Una meme coin nata dal caos.<br/>Benvenuto nel lato strano di Solana.</p>
+            <div className="actions"><a className="button primary" href="#memes">ENTER THE MEME LAB <Arrow/></a><a className="text-link" href="#about">Decodifica GLITCH <span aria-hidden="true">↓</span></a></div>
+          </div>
+          <div className="hero-art">
+            <div className="halo" aria-hidden="true"/>
+            <span className="robot-coordinate mono" aria-hidden="true">SUBJECT_001<br/>STATUS: UNFIXABLE</span>
+            <Robot/>
+            <Graffiti className="hero-graffiti"/>
+            <div className="robot-sticker" aria-hidden="true">NOT A BUG.<br/><b>A CULT FEATURE.</b></div>
+            <span className="art-caption mono">G–01 / KING OF THE GLITCH</span>
+          </div>
+          <div className="hero-footer mono"><span><b>$GLTCH</b> / ZERO BUDGET. PURE CULTURE.</span><button type="button" onClick={() => setPaused(!paused)} aria-pressed={paused}>{paused ? '▶ Attiva animazioni' : 'Ⅱ Pausa animazioni'}</button><a href="#about">SCROLL TO INFECT <span aria-hidden="true">↓</span></a></div>
+        </section>
+
+        <div className="tape" aria-hidden="true"><div>✳ NO PERFECT CODE. ONLY PERFECT CHAOS. <span>✳ $GLTCH</span> ✳ BUILT DIFFERENT. BROKEN ON PURPOSE. <span>✳ $GLTCH</span></div></div>
+
+        <section id="about" className="section about" aria-labelledby="about-title">
+          <div className="section-index mono"><span>01 / ORIGIN STORY</span><span>THE SYSTEM DIDN’T PLAN FOR THIS.</span></div>
+          <div className="about-layout">
+            <div className="about-poster"><span className="poster-label mono">REJECTED BY THE SYSTEM / ADOPTED BY THE INTERNET</span><div className="poster-type" aria-hidden="true">ERROR<br/><span>IS AN</span><br/>ART FORM.</div><Graffiti/><span className="poster-stamp">100%<br/>UNFIXABLE</span><span className="poster-bottom mono">[ THIS IS NOT A SOFTWARE UPDATE. ]</span></div>
+            <div className="about-copy"><p className="eyebrow">MEET YOUR FAVORITE MALFUNCTION.</p><h2 id="about-title">Nato sbagliato.<br/><em>Diventato culto.</em></h2><p className="lead">Ci hanno promesso robot perfetti.<br/>Il nostro ha scoperto i meme.</p><p>GLITCH è un concept di meme coin AI: cultura internet, creatività umana e un robot che prende tutto poco sul serio. G–01 è la nostra mascotte, non un agente di trading.</p><p>Partiamo da zero sulla devnet Solana. Un laboratorio aperto dove sperimentare un token SPL e costruire un’identità insieme. Nessuna promessa di rendimento. Solo spazio alle idee.</p><div className="manifesto"><span>01 <b>AI inspired</b></span><span>02 <b>Community first</b></span><span>03 <b>Devnet only</b></span></div></div>
+          </div>
+        </section>
+
+        <section id="tokenomics" className="section tokenomics" aria-labelledby="token-title">
+          <div className="section-index mono"><span>02 / TOKEN PROTOCOL</span><span>READ THE SOURCE. QUESTION THE HYPE.</span></div>
+          <div className="section-heading"><h2 id="token-title">Chaos in the code.<br/><em>Clarity in the numbers.</em></h2><p>Una proposta, non una distribuzione già avvenuta.<br/>Token di test senza valore economico.</p></div>
+          <div className="token-layout">
+            <div className="supply-panel"><span className="eyebrow">TOTAL TEST SUPPLY / $GLTCH</span><strong>1.000.000.000</strong><div className="supply-meta mono"><span>SOLANA SPL</span><span>6 DECIMALI</span></div><div className="token-chart" role="img" aria-label="Ripartizione proposta: community 60%, ecosistema 20%, riserva 15%, contributori 5%"><div className="chart-center"><span>GLTCH</span><small>EXPERIMENT_001</small></div></div><div className="protocol-note"><i className="status-dot"/><p>Freeze authority assente.<br/>Mint authority revocata dopo l’emissione di test.</p></div></div>
+            <div className="allocations">{[['60', 'Community & meme rewards', 'THE INTERNET OWNS THE JOKE.'], ['20', 'Ecosistema & collaborazioni', 'BUILD SOMETHING STRANGE.'], ['15', 'Riserva di progetto', 'ROOM FOR THE UNEXPECTED.'], ['5', 'Contributori', 'FOR THE HANDS BEHIND THE CHAOS.']].map(([amount, title, note], i) => <div className={`allocation allocation-${i}`} key={title}><span className="allocation-number mono">0{i+1}</span><div><h3>{title}</h3><small className="mono">{note}</small></div><strong>{amount}<span>%</span></strong></div>)}<p className="token-disclaimer">Ripartizione concettuale: lo script deposita il 100% in un account di test. Nessuna liquidità, quotazione o vendita.</p></div>
+          </div>
+        </section>
+
+        <section id="memes" className="section memes" aria-labelledby="memes-title">
+          <div className="section-index mono"><span>03 / THE MEME LAB</span><span>YOUR BROWSER IS THE UNDERGROUND.</span></div>
+          <div className="section-heading"><h2 id="memes-title">MAKE MEMES.<br/><em>BREAK THE SIMULATION.</em></h2><p>Il primo contributo? Una pessima battuta.<br/>Remixa il caos e portalo fuori da qui.</p></div>
+          <div className="meme-layout">
+            <div className="meme-poster-wrap"><span className="poster-tape" aria-hidden="true"/><div className="meme-card"><div className="meme-top mono"><span>GLITCH / UNAUTHORIZED ORIGINAL</span><span>#{String(meme+1).padStart(3,'0')}</span></div><span className="meme-bg-type" aria-hidden="true">ERROR</span><div ref={memeArt} className="meme-art"><Robot/></div><p className="meme-caption" aria-live="polite">{captions[meme]}</p><div className="meme-watermark mono"><span>$GLTCH</span><span>NO THOUGHTS. JUST GLITCH.</span></div></div><span className="meme-handwriting" aria-hidden="true">steal this meme ↗</span></div>
+            <div className="meme-controls"><span className="terminal-label mono"><i className="status-dot"/> MEME_ENGINE.EXE / READY</span><h3>Il tuo prossimo<br/><em>errore preferito.</em></h3><p>Scegli una caption, scarica il meme in SVG e condividilo dove vuoi. Nessun account, nessun costo.</p><div className="meme-selector" role="group" aria-label="Scegli una caption">{captions.map((_, i) => <button type="button" key={i} aria-label={`Caption ${i+1}`} aria-pressed={meme===i} onClick={() => {setMeme(i);setCopyStatus('');}}>0{i+1}</button>)}</div><button type="button" className="button primary" onClick={() => {setMeme((meme+1)%captions.length);setCopyStatus('');}}>Cambia frequenza <span aria-hidden="true">⟳</span></button><button type="button" className="button secondary" onClick={download}>Scarica meme SVG <span aria-hidden="true">↓</span></button><button type="button" className="text-link" onClick={copy}>Copia caption <Arrow/></button><p className="copy-status" role="status">{copyStatus}</p><div className="lab-note mono"><span>100% LOCALE / 0 €</span><p>Caption predefinite, elaborate nel browser.<br/>Nessuna API AI a pagamento.</p></div></div>
+          </div>
+        </section>
+
+        <section id="community" className="community" aria-labelledby="community-title"><div className="community-grid" aria-hidden="true"/><Graffiti className="community-graffiti"/><p className="eyebrow">04 / FIND YOUR PEOPLE</p><h2 id="community-title">YOU ARE<br/>THE <span>GLITCH.</span></h2><p className="community-copy">Artisti, builder, shitposter e robot confusi.<br/>C’è spazio per il tuo tipo di strano.</p><a className="button primary" href="https://github.com/Bonz-droid/Glitch" target="_blank" rel="noopener noreferrer">Contribuisci su GitHub <Arrow/></a><p className="community-note mono">CANALI SOCIAL UFFICIALI IN PREPARAZIONE.<br/>NESSUNA PREVENDITA. NESSUN MINT MAINNET.</p><span className="community-signature" aria-hidden="true">stay beautifully broken.</span></section>
+      </main>
+      <footer className="site-footer"><a className="wordmark" href="#">GLITCH<span>✳</span></a><p>Un esperimento, non un investimento.<br/>$GLTCH è un token di test devnet senza valore reale.</p><span className="mono">© 2026 GLITCH<br/>STAY WEIRD. STAY HUMAN.</span><a className="back-top" href="#" aria-label="Torna all’inizio">↑</a></footer>
+    </div>
+  );
+}
