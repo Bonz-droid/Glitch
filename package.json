@@ -1,1 +1,32 @@
-{"name":"glitch","version":"0.1.0","private":true,"scripts":{"dev":"next dev","build":"next build","typecheck":"tsc --noEmit","test":"tsx --test tests/*.test.ts","devnet":"tsx scripts/devnet.ts","check":"npm run typecheck && npm test && npm run build"},"dependencies":{"next":"^15.5.0","react":"^19.1.0","react-dom":"^19.1.0"},"devDependencies":{"@solana/web3.js":"^1.98.4","@solana/spl-token":"^0.4.14","@types/node":"^22.0.0","@types/react":"^19.0.0","@types/react-dom":"^19.0.0","typescript":"^5.9.0","tsx":"^4.20.0","tailwindcss":"^4.1.0","@tailwindcss/postcss":"^4.1.0"}}
+{
+  "name": "glitch",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "typecheck": "tsc --noEmit",
+    "test": "tsx --test tests/*.test.ts",
+    "devnet": "tsx scripts/devnet.ts",
+    "check": "npm run typecheck && npm test && npm run build"
+  },
+  "dependencies": {
+    "next": "^15.5.0",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
+  },
+  "devDependencies": {
+    "@solana/web3.js": "^1.98.4",
+    "@solana/spl-token": "^0.4.14",
+    "@types/node": "^22.0.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "typescript": "^5.9.0",
+    "tsx": "^4.20.0",
+    "tailwindcss": "^4.1.0",
+    "@tailwindcss/postcss": "^4.1.0"
+  },
+  "overrides": {
+    "postcss": "^8.5.23"
+  }
+}
