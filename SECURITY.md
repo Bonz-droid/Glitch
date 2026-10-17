@@ -1,0 +1,19 @@
+# Sicurezza GLITCH
+
+## Confini
+
+Il sito è statico e non contiene wallet adapter, richieste di firma, acquisti, analytics, secret o API AI. Non è un prodotto finanziario operativo. Non inserire chiavi o seed nel frontend, nelle variabili NEXT_PUBLIC_* o nei commit.
+
+Lo script SPL usa solo l'endpoint devnet codificato nel sorgente e verifica il genesis hash. Gli argomenti sconosciuti sono rifiutati. Wallet generati in memoria, senza lettura di wallet personali. Mint, trasferimento, burn e revoca autorità sono atomici. Le autorità vengono controllate dopo conferma. I token non sono recuperabili dopo l'uscita: è un test usa e getta.
+
+## Controlli prima del deploy
+
+- Eseguire typecheck, test, build, audit completo e audit produzione; esaminare le vulnerabilità prima di pubblicare.
+- Generare e committare package-lock.json; passare i workflow da npm install a npm ci.
+- Non usare `npm audit fix --force` senza verificare incompatibilità e ripetere i test.
+- Nessun file .env, .devnet, PEM o chiave deve entrare in Git; .gitignore li esclude.
+- Verificare Chrome/Firefox e viewport mobile, focus tastiera, reduced motion, download SVG e appunti.
+- GitHub Actions ha permessi minimi e non esegue transazioni blockchain.
+- Non aprire issue pubbliche contenenti segreti. Usare GitHub Private vulnerability reporting se abilitato dal proprietario.
+
+`public/_headers` è supportato da Cloudflare Pages, non da GitHub Pages. La CSP consente script/style inline necessari all'export Next.js; non è una CSP stretta con nonce. Nessun contenuto HTML fornito dagli utenti viene iniettato. Gli SVG scaricabili usano solo caption costanti. Nessun audit professionale smart contract o penetration test è stato effettuato.
