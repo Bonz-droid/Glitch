@@ -4,7 +4,7 @@ import { useId } from 'react';
 export function Robot({ className = '' }: { className?: string }) {
   const id = useId().replace(/:/g, '');
   return (
-    <svg className={`robot ${className}`} viewBox="0 0 640 720" role="img" aria-label="G–01, robot con corona neon, occhio sinistro a X e occhio destro circolare">
+    <svg className={`robot ${className}`} viewBox="0 0 640 720" role="img" aria-label="G–01, robot with a neon crown, an X-shaped left eye and a circular right eye">
       <defs>
         <linearGradient id={`${id}-shell`} x1="0" y1="0" x2="1" y2="1"><stop stopColor="#c6bdd8"/><stop offset=".18" stopColor="#5c536e"/><stop offset=".5" stopColor="#292532"/><stop offset=".83" stopColor="#17151f"/><stop offset="1" stopColor="#786685"/></linearGradient>
         <linearGradient id={`${id}-edge`}><stop stopColor="#bdff43"/><stop offset=".5" stopColor="#8e789c"/><stop offset="1" stopColor="#a34dff"/></linearGradient>
