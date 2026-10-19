@@ -1,8 +1,9 @@
 'use client';
 
-import { useRef, useState } from 'react';
+import { useState } from 'react';
 import { Robot } from './components/robot';
-import { captions, createMemeSvg } from './lib/memes';
+import { MemeLab } from './components/meme-lab';
+import { community } from './lib/site-config';
 
 function Arrow() { return <span aria-hidden="true">↗</span>; }
 function Graffiti({ className = '' }: { className?: string }) {
@@ -10,33 +11,7 @@ function Graffiti({ className = '' }: { className?: string }) {
 }
 
 export default function Home() {
-  const [meme, setMeme] = useState(0);
   const [paused, setPaused] = useState(false);
-  const [copyStatus, setCopyStatus] = useState('');
-  const memeArt = useRef<HTMLDivElement>(null);
-
-  async function copy() {
-    try {
-      await navigator.clipboard.writeText(`${captions[meme]} #GLITCH $GLTCH`);
-      setCopyStatus('Caption copied ✓');
-    } catch {
-      setCopyStatus('Clipboard unavailable: select the caption on the poster to copy it.');
-    }
-  }
-
-  function download() {
-    const robot = memeArt.current?.querySelector('svg');
-    if (!robot) return;
-    const svg = createMemeSvg(captions[meme], robot.innerHTML);
-    const url = URL.createObjectURL(new Blob([svg], { type: 'image/svg+xml' }));
-    const link = document.createElement('a');
-    link.href = url;
-    link.download = 'glitch-meme.svg';
-    document.body.append(link);
-    link.click();
-    link.remove();
-    window.setTimeout(() => URL.revokeObjectURL(url), 1000);
-  }
 
   return (
     <div className={paused ? 'site paused' : 'site'}>
@@ -95,13 +70,10 @@ export default function Home() {
         <section id="memes" className="section memes" aria-labelledby="memes-title">
           <div className="section-index mono"><span>03 / THE MEME LAB</span><span>YOUR BROWSER IS THE UNDERGROUND.</span></div>
           <div className="section-heading"><h2 id="memes-title">MAKE MEMES.<br/><em>BREAK THE SIMULATION.</em></h2><p>Your first contribution? A terrible joke.<br/>Remix the chaos. Take it everywhere.</p></div>
-          <div className="meme-layout">
-            <div className="meme-poster-wrap"><span className="poster-tape" aria-hidden="true"/><div className="meme-card"><div className="meme-top mono"><span>GLITCH / UNAUTHORIZED ORIGINAL</span><span>#{String(meme+1).padStart(3,'0')}</span></div><span className="meme-bg-type" aria-hidden="true">ERROR</span><div ref={memeArt} className="meme-art"><Robot/></div><p className="meme-caption" aria-live="polite">{captions[meme]}</p><div className="meme-watermark mono"><span>$GLTCH</span><span>NO THOUGHTS. JUST GLITCH.</span></div></div><span className="meme-handwriting" aria-hidden="true">steal this meme ↗</span></div>
-            <div className="meme-controls"><span className="terminal-label mono"><i className="status-dot"/> MEME_ENGINE.EXE / READY</span><h3>Your next<br/><em>favorite mistake.</em></h3><p>Pick a caption, download your meme as an SVG, and share it wherever you like. No account. No cost.</p><div className="meme-selector" role="group" aria-label="Choose a caption">{captions.map((_, i) => <button type="button" key={i} aria-label={`Caption ${i+1}`} aria-pressed={meme===i} onClick={() => {setMeme(i);setCopyStatus('');}}>0{i+1}</button>)}</div><button type="button" className="button primary" onClick={() => {setMeme((meme+1)%captions.length);setCopyStatus('');}}>Switch frequency <span aria-hidden="true">⟳</span></button><button type="button" className="button secondary" onClick={download}>Download meme SVG <span aria-hidden="true">↓</span></button><button type="button" className="text-link" onClick={copy}>Copy caption <Arrow/></button><p className="copy-status" role="status">{copyStatus}</p><div className="lab-note mono"><span>100% LOCAL / €0</span><p>Preset captions, processed in your browser.<br/>No paid AI APIs.</p></div></div>
-          </div>
+          <MemeLab/>
         </section>
 
-        <section id="community" className="community" aria-labelledby="community-title"><div className="community-grid" aria-hidden="true"/><Graffiti className="community-graffiti"/><p className="eyebrow">04 / FIND YOUR PEOPLE</p><h2 id="community-title">YOU ARE<br/>THE <span>GLITCH.</span></h2><p className="community-copy">Artists, builders, shitposters, and confused robots.<br/>There’s room for your kind of weird.</p><a className="button primary" href="https://github.com/Bonz-droid/Glitch" target="_blank" rel="noopener noreferrer">Contribute on GitHub <Arrow/></a><p className="community-note mono">OFFICIAL SOCIAL CHANNELS COMING LATER.<br/>NO PRESALE. NO MAINNET MINT.</p><span className="community-signature" aria-hidden="true">stay beautifully broken.</span></section>
+        <section id="community" className="community" aria-labelledby="community-title"><div className="community-grid" aria-hidden="true"/><Graffiti className="community-graffiti"/><p className="eyebrow">04 / FIND YOUR PEOPLE</p><h2 id="community-title">YOU ARE<br/>THE <span>GLITCH.</span></h2><p className="community-copy">Artists, builders, shitposters, and confused robots.<br/>There’s room for your kind of weird.</p><div className="community-links"><a className="button primary" href="https://github.com/Bonz-droid/Glitch" target="_blank" rel="noopener noreferrer">Contribute on GitHub <Arrow/></a>{community.x && <a className="button secondary" href={community.x} target="_blank" rel="noopener noreferrer">Follow on X <Arrow/></a>}{community.telegram && <a className="button secondary" href={community.telegram} target="_blank" rel="noopener noreferrer">Join Telegram <Arrow/></a>}</div><p className="community-note mono">{!community.x && !community.telegram && <>OFFICIAL SOCIAL CHANNELS COMING LATER.<br/></>}NO PRESALE. NO MAINNET MINT.</p><span className="community-signature" aria-hidden="true">stay beautifully broken.</span></section>
       </main>
       <footer className="site-footer"><a className="wordmark" href="#">GLITCH<span>✳</span></a><p>An experiment, not an investment.<br/>$GLTCH is a devnet test token with no real-world value.</p><span className="mono">© 2026 GLITCH<br/>STAY WEIRD. STAY HUMAN.</span><a className="back-top" href="#" aria-label="Back to top">↑</a></footer>
     </div>

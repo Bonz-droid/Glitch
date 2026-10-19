@@ -73,3 +73,7 @@ Alternativa: Cloudflare Pages Free, import del repository, comando `npm run buil
 Vedi [SECURITY.md](SECURITY.md). La CI controlla tipi, protezioni devnet, build e dipendenze di produzione. Il test on-chain non viene lanciato automaticamente in CI.
 
 Verifica CI del 17 ottobre 2026: installazione, TypeScript, tre test delle protezioni devnet, build statica, piano offline e audit produzione alla soglia high superati sul commit `e6b646e`. PostCSS è vincolato tramite override a una versione corretta (`^8.5.23`). Esecuzione: https://github.com/Bonz-droid/Glitch/actions/runs/39030806724. Test on-chain, verifica nel browser e deploy non effettuati. Prima di pubblicare, verificare layout mobile, navigazione, pausa animazioni, download e copia caption (richiede HTTPS o localhost).
+
+## Meme Lab and Community configuration
+
+See [Meme Lab documentation](docs/meme-lab.md) for custom captions, PNG/SVG downloads, Web Share fallbacks, Open Graph previews, official X/Telegram URLs and browser tests.

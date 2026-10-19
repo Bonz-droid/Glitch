@@ -5,6 +5,7 @@ permissions:
 jobs:
   check:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -12,5 +13,16 @@ jobs:
           node-version: 22
       - run: npm install --no-fund
       - run: npm run check
+        env:
+          NEXT_PUBLIC_BASE_PATH: /Glitch
       - run: npm run devnet -- --plan
       - run: npm audit --omit=dev --audit-level=high
+      - run: npx playwright install --with-deps chromium
+      - run: mkdir -p preview && cp -R out preview/Glitch
+      - run: npm run test:browser
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: browser-failure-details
+          path: test-results/
+          retention-days: 3
