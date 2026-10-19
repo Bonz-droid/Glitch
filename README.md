@@ -27,8 +27,8 @@ npm audit
 
 - About, Tokenomics, Memes, Community, navigazione responsive.
 - Mascotte originale G–01 in SVG, effetti glitch, pausa animazioni e rispetto di `prefers-reduced-motion`.
-- Meme Lab con quattro caption, copia negli appunti e download SVG locale. Non genera contenuti tramite un modello AI remoto.
-- Collegamento al repository ufficiale; nessun canale social inventato.
+- Meme Lab con quattro preset, caption personalizzate, export PNG/SVG locale e condivisione con fallback. Non genera contenuti tramite un modello AI remoto.
+- Collegamento al repository ufficiale e URL ufficiali X/Telegram configurabili; nessun canale social inventato.
 - Tokenomics **proposte**, non distribuzioni effettuate: 60% community, 20% ecosistema, 15% riserva, 5% contributori.
 
 ## SPL: esclusivamente devnet

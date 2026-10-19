@@ -11,9 +11,9 @@ Lo script SPL usa solo l'endpoint devnet codificato nel sorgente e verifica il g
 - Eseguire typecheck, test, build, audit completo e audit produzione; esaminare le vulnerabilità prima di pubblicare.
 - Generare e committare package-lock.json; passare i workflow da npm install a npm ci.
 - Non usare `npm audit fix --force` senza verificare incompatibilità e ripetere i test.
-- Nessun file .env, .devnet, PEM o chiave deve entrare in Git; .gitignore li esclude.
+- Nessun file con segreti (.env.local, .devnet, PEM o chiavi) deve entrare in Git; .gitignore li esclude. .env.example contiene esclusivamente impostazioni pubbliche di esempio.
 - Verificare Chrome/Firefox e viewport mobile, focus tastiera, reduced motion, download SVG e appunti.
 - GitHub Actions ha permessi minimi e non esegue transazioni blockchain.
 - Non aprire issue pubbliche contenenti segreti. Usare GitHub Private vulnerability reporting se abilitato dal proprietario.
 
-`public/_headers` è supportato da Cloudflare Pages, non da GitHub Pages. La CSP consente script/style inline necessari all'export Next.js; non è una CSP stretta con nonce. Nessun contenuto HTML fornito dagli utenti viene iniettato. Gli SVG scaricabili usano solo caption costanti. Nessun audit professionale smart contract o penetration test è stato effettuato.
+`public/_headers` è supportato da Cloudflare Pages, non da GitHub Pages. La CSP consente script/style inline necessari all'export Next.js; non è una CSP stretta con nonce. Nessun contenuto HTML fornito dagli utenti viene iniettato. Le caption personalizzate sono validate, limitate a quattro righe ed escapate come testo XML prima di entrare negli SVG. Il markup della mascotte proviene solo dal componente interno. PNG e SVG sono generati localmente; nessuna caption viene caricata automaticamente. La Web Share API invia dati solo dopo un comando esplicito dell’utente; in caso di indisponibilità vengono offerti appunti o copia manuale. I link social accettano solo URL HTTPS dei domini previsti, ma la titolarità degli account va verificata dal proprietario. Nessun audit professionale smart contract o penetration test è stato effettuato.
