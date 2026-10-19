@@ -77,3 +77,7 @@ Verifica CI del 17 ottobre 2026: installazione, TypeScript, tre test delle prote
 ## Meme Lab and Community configuration
 
 See [Meme Lab documentation](docs/meme-lab.md) for custom captions, PNG/SVG downloads, Web Share fallbacks, Open Graph previews, official X/Telegram URLs and browser tests.
+
+## SPL token pre-launch (offline only)
+
+Run `npm run token:plan` to review GLITCH/GLTCH metadata, proposed supply and authority policy without network calls or signing. See [pre-launch documentation](docs/token-prelaunch.md), [future mainnet checklist](docs/mainnet-checklist.md), and [SPL versus launchpads](docs/spl-vs-launchpad.md). The existing devnet script remains unchanged; no on-chain execution is part of this preparation.

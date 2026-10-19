@@ -1,0 +1,19 @@
+{
+  "stage": "prelaunch-offline",
+  "name": "GLITCH",
+  "symbol": "GLTCH",
+  "decimals": 6,
+  "displaySupply": "1000000000",
+  "baseUnitSupply": "1000000000000000",
+  "tokenProgram": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA",
+  "metadataProgram": "metaqbxxUerdq28cj1RbAWkYQm3ybzjb6a8bt518x1s",
+  "metadataUri": "https://bonz-droid.github.io/Glitch/token/glitch.json",
+  "imageUri": "https://bonz-droid.github.io/Glitch/token/g-01.png",
+  "expectedMintAuthority": null,
+  "expectedFreezeAuthority": null,
+  "metadataIsMutable": false,
+  "tokenStandard": "Fungible",
+  "mintAddress": null,
+  "network": null,
+  "assetPublicationVerified": false
+}

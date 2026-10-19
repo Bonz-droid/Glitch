@@ -16,6 +16,7 @@ jobs:
         env:
           NEXT_PUBLIC_BASE_PATH: /Glitch
       - run: npm run devnet -- --plan
+      - run: npm run token:plan
       - run: npm audit --omit=dev --audit-level=high
       - run: npx playwright install --with-deps chromium
       - run: mkdir -p preview && cp -R out preview/Glitch

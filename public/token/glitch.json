@@ -1,0 +1,11 @@
+{
+  "name": "GLITCH",
+  "symbol": "GLTCH",
+  "description": "GLITCH is an AI-inspired meme token concept featuring G-01, the crowned robot with an X eye and a circular eye. Pre-launch artwork and metadata; no mainnet launch, sale or liquidity is represented.",
+  "image": "https://bonz-droid.github.io/Glitch/token/g-01.png",
+  "external_url": "https://bonz-droid.github.io/Glitch/",
+  "properties": {
+    "files": [{ "uri": "https://bonz-droid.github.io/Glitch/token/g-01.png", "type": "image/png" }],
+    "category": "image"
+  }
+}
