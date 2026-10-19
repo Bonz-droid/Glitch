@@ -27,8 +27,8 @@ npm audit
 
 - About, Tokenomics, Memes, Community, navigazione responsive.
 - Mascotte originale G–01 in SVG, effetti glitch, pausa animazioni e rispetto di `prefers-reduced-motion`.
-- Meme Lab con quattro caption, copia negli appunti e download SVG locale. Non genera contenuti tramite un modello AI remoto.
-- Collegamento al repository ufficiale; nessun canale social inventato.
+- Meme Lab con quattro preset, caption personalizzate, export PNG/SVG locale e condivisione con fallback. Non genera contenuti tramite un modello AI remoto.
+- Collegamento al repository ufficiale e URL ufficiali X/Telegram configurabili; nessun canale social inventato.
 - Tokenomics **proposte**, non distribuzioni effettuate: 60% community, 20% ecosistema, 15% riserva, 5% contributori.
 
 ## SPL: esclusivamente devnet
@@ -73,3 +73,7 @@ Alternativa: Cloudflare Pages Free, import del repository, comando `npm run buil
 Vedi [SECURITY.md](SECURITY.md). La CI controlla tipi, protezioni devnet, build e dipendenze di produzione. Il test on-chain non viene lanciato automaticamente in CI.
 
 Verifica CI del 17 ottobre 2026: installazione, TypeScript, tre test delle protezioni devnet, build statica, piano offline e audit produzione alla soglia high superati sul commit `e6b646e`. PostCSS è vincolato tramite override a una versione corretta (`^8.5.23`). Esecuzione: https://github.com/Bonz-droid/Glitch/actions/runs/39030806724. Test on-chain, verifica nel browser e deploy non effettuati. Prima di pubblicare, verificare layout mobile, navigazione, pausa animazioni, download e copia caption (richiede HTTPS o localhost).
+
+## Meme Lab and Community configuration
+
+See [Meme Lab documentation](docs/meme-lab.md) for custom captions, PNG/SVG downloads, Web Share fallbacks, Open Graph previews, official X/Telegram URLs and browser tests.
